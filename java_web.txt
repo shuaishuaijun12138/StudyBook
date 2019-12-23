@@ -1,0 +1,334 @@
+一.配置环境
+1.配置和启动Tomcat:下载解压，配置一个Javahome变量指向jdk 通过双击starup.bat通过localhost:8080能够访问算是成功
+2.关闭Tomcat: shutdown 关闭服务器 server.xml修改端口号
+3.配置tomcat启动，配置path指向Tomcat下的bin目录 
+4.配置一个catalina_home  指向bin目录，然后就可以通过cataline进行启动
+5.Tomcat管理:配置conf下面的Tomcat-users.xml配置文件，配置账号和密码
+6.Tomcat目录结构:java项目啊下面创建一个文件夹,在文件夹内，WEB-INF,里面分为classes（编译后的class要放在这个文件夹下面），和lib，和web.xml文件
+7.修改默认的输出目录到classes中，自动把编译好的class文件传过去
+8.在tomcat/conf/catalina/localhost/下面创建一个xml文件，指向java路径
+9.进入JAVA_EE 先创建一个servers 在创建一个Dynamic web Project(动态的java工程)
+二.配置Servlet中的web.xml信息
+1.创建一个Servlet接口的实现类
+2.在web.xml 文件中配置和映射这个Servlet
+3.web.xml中 Servlet-name注册名字 Servlet-class Servlet全类名  Servlet-mapping 需要和某一个Servlet节点的Servlet-name子节点文本节点一致 
+4.一个Servlet中一共有四个阶段
+	构造器  只执行一次，在创建好Servlet时，创建Servlet实例，调用构造器
+	init	只执行一次,在创建好实例后立即调用,用于初始化响应请求
+	Service   执行多次,每次请求调用Service方法，实际用于响应请求的
+	destroy   只执行一次,在当前Servlet所在的Web应用被卸载前调用，用于释放当前Servlet所占用的资源
+5.load-on-startup:可以指定Servlet被创建的时机，若为负数，则在第一次请求时创建，若为0或正数，则在当前WEB应用被Serlvet容器加载时创建实例，且数组越小越早被创建
+6.ServletConfig:封装了Serlvet的配置信息，并且可以获取ServletContext对象,两种方式获取:1.arg0.getInitParamter("名字"); 第二种2.Enumeration s=arg0.getInitParamterNames名字集合	
+7.重点!ServletContext:获取方式和ServletConfig一样，和ServletConfig的区别，都是初始化参数，但是ServletConfig获取方式是局部参数，而ServletContext是全局参数
+8.重点!ServletContext:获取绝对路径位置:getRealPath获取当前Web应用在服务器端的绝对路径，而不熟部署前的路径
+9.重点!ServletContext:获取web应用的名字:getContextPath()
+10.重点!ServletContext:获取某个文件的输入留:getResourceAsStream(类型：InputStream）从服务器根目录寻找
+
+二.接受用户信息并且响应
+1.Servlet中的service（）用于响应信息，因此每次都会调用这个service（）方法
+2.ServletRequest：封装了接受信息，可以从中获取到任何的请求信息
+	1)获取请求参数：String getParameter(String name):根据请求参数的名字，返回参数值(最常用)
+	  若请求参数有多个数据，需要使用String[] getParameterValues();
+	  获取页面所有的name:Enumeration<String> names=request.getParameterNames
+	  获取页面元素的键值对:Map getParameterMap() key:参数名,value:参数值,String[]类型数据
+	2)获取请求的URI:需要把request转换为他的一个子类:HttpServletRequst  http.getRequestURI()
+	3)获取请求方式:http.getMethod()
+	4)获取页面参数:http.getQueryString()
+3.ServletResponse:封装了响应信息，如果想给用户什么响应，具体可以使用该接口的方法实现
+	1)getWriter:返回一个printWriter对象，调用该对象的print（）方法，将printf（）的结果打印到控制台上面
+	2)response.setContentType("application/msword");把页面信息写到一个word文中，可以下载
+	3)HttpServletResponse:和接受信息相对应的一个子类
+4.MyGenericServlet（了解）：自定义封装了一个抽象类GenericServlet，实现Servlet和ServletConfig两个接口，那么新的类直接继承这个类，就可以简化代码的实现(为什么是抽象方法，因为service是一个抽象方法)
+5.MyHttpServlet(开发用这个):自定义封装了HttpServlet,是一个Servlet,继承自GenericServlet，针对与HTTP协议定制,主要是封装post和get两种方法
+6.JSP:java servlet page 原理：本身就是一个Servlet，自动封装和继承了9个隐藏对象
+	1.request*:HttpServletRequest最常使用回去页面参数
+	2.response(几乎不用):HttpServletResponse返回页面响应
+	3.out*:就是out.println();往页面里面添加元素
+	4.application*:ServletContext获取基本的配置信息
+	5.session*:保证浏览器和页面的一个会话监控
+	6.exception(还可以):错误页面的时候使用
+	7.page(不常用):指向当前页面的Servlet对象的引用，但为object类型
+	8.getContext*:用来返回jsp文件的其余八个隐藏对象
+	9.config(几乎不用):获取配置信息
+7.JSP语法:
+	1.<%= %>jsp表达式 能提供java变量或表达式运算结果给客户端的化简方式
+	2.<%  %>jsp脚本:在里面编写java代码
+	3.<%! %>jsp声明:（几乎不使用)写的函数会在代码的外面
+	4.<%-- --%>注释:和html的注释有些区别，jsp注释会阻止java代码继续执行
+8.JSP域对象的属性:
+	1.Object getAttribute(String name)获取指定的属性
+	2.Enumeration:getAttributeNames():获取所有的属性的名字组成的Enumeration对象
+	3.removeAttribute(String name):移除指定的属性
+	4.void setAttribute(String name,Object o)设置属性
+9.四个隐藏对象的属性:
+	1.PageContext:仅限于当前页面
+	2.request:仅限于当前页面
+	3.session:一次会话（打开浏览器到关闭浏览器的区间内，不包括销毁session）内全部访问
+	4.application:打开web应用的区间内全部能够读取对应的属性
+10.请求的转发和重定向:
+	1.请求的转发:RequestDispatcher接口 forward方法实现请求转发
+	  请求的转发:地址栏是初次发出请求的地址
+	  请求的转发:只能转发给当前WEB应用的资源
+	  请求的转发:在最终的Servlet中，request对象和中转的那个request是同一个对象
+	2.请求的重定向:sendRedirect方法实现
+	  请求的重定向:可以重定向给任何资源
+	  请求的重定向:地址栏不再是初次发出请求的地址，是最后响应的那个地址
+	  请求的重定向:在最终的Servlet中，request对象和中转那个request不是同一个对象
+11.JSP指定:
+	Page:
+	1)page指定用于定义jsp页面的属性，无论page指定出现在JSP页面中的什么地方,都作用于整个页面，但是最好还是放在起始位置
+	2)<%@ 指令 属性="值"%>:
+	 import属性：java中需要导入的jar包
+	 language属性:编码语言，但是只支持java代码
+	 charset属性:UTF-8编码，
+	 session属性：true或false，指定当前session是否可用
+	 errorPage属性:错误页面指向哪里，默认的是一种转发机制 /表示WEB应用的根目录
+	 isErrorPage属性:设置当前页面是否显示错误信息,用来配合exception隐藏对象使用
+	 如何使用客户不能直接访问某个页面呢 对于isErrorPage页面，我们一般放在WEB-INF下的文件，不能通过在浏览器中直接输入url来访问(通过请求的转发是可以的)
+	 contentType:指定当前JSP页面的响应类型,例如，指定为文档页面的话，就可以下载当前页面信息,通常情况下不改变text/html charset="UTF-8"
+	Include:
+	1)<%@ include file=src  %>  静态引入别的页面:源码级包含
+12.JSP标签:
+	<jsp:forword page="">
+	<jsp:include page="">
+	在这两期间可以使用<jsp:param value="" name=""/>传递参数	
+13.中文乱码:
+	1).保证charset=""编码和pageEncoding编码都是utf-8   并且浏览器的解析页面编码也是utf-8
+	2).POST方式:设置request.setEncoding("UTF-8")编码 
+	   GET方式:配置Servlet中的servlet.xml配置文件Connector节点，设置userBody..编码为utf-8  但是目前版本已经不需要设置了
+三.MVC
+1.mvc简介:
+	model 模型，也是mvc的主要部分
+	view 试图,也就是请求完的jsp页面
+	control控制器,也是选择的servlet
+2.MVC设计结构:
+	先设计DAO层（数据操作接口）
+	再设计JDBCutils
+	设计如何让很多个请求经过一个Servlet，就是控制器的设计
+	1).使用传参的方式，设计简单，但是容易暴露
+	2).通过反射机制:先映射这个类，获取到全部的方法,之后使用method.invoke(this,request,response)反射到个各类当中
+	3).转发的时候可以使用\+转发的页面，是根目录，但是重定向的时候使用\表示站点根目录(推荐使用request.getContextPath()+转发的页面)
+	4).面向接口编程:
+3.Cookie会话与状态管理
+	作为浏览器，必须能够采用一种机制来唯一的表示一个用户，同时记录用户的状态
+	底层实现原理set-Cookit:name-value 是一个唯一的键值对
+	1).创建一个Cookie对象 Cookie ck=new Cookie();里面放一个键值对
+	2).response.addCookie()往页面中添加一个cookie 
+	3).request.getCookies()返回一个数组
+	4).cookie.setMaxAge设置Cookie的最大存活秒数  以秒为单位，设置为负数表示不进行存储
+	5).*Cookie的作用范围: 可以作用当前目录和当前目录的子目录,但不能作用当前目录的上一级目录 
+	可以增加Cookie的作用范围:cookie.setPath(request.getContextPath());
+4.Session会话
+	Session是建立在Cookie上的，如果禁止使用Cookie，Session就会自动取消
+	持久化SessionCookie  设置一个名为JSESSIONID的Cookie  就可以保存Session对象
+	1.什么时候创建一个HttpSession对象?
+	1).当前页面J禁止Session表示当前页面无法创建Session，但是可以使用httpSession对象->假如先访问别的页面，那个页面有Session也会传到这个页面
+	2).对于Servlet而言：若Servlet是客户端访问的第一个WEB应用资源，只有调用了request.getSession才会创建HttpSession对象,若当前不是第一个访问的页面，且其他页面已经创建了一个Session，则当前页面不会创建Session对象
+	3).page指令的Session为false 表示禁用当前页面的Session隐含变量,但可以使用其他的显示httpsession
+	2.在Servlet如何获取HttpSession对象?
+	1).request.getSession(boolean create):create为false，若当前JSP页面关联的HttpSession对象，则返回false，若有，则返回null,  |create为true，一定返回一个httpsession对象，若没有和当前JSP页面关联的httpression对象，则服务器会创建一个新的Httpression
+	2).request.getSession()<==>request.getSession(true);
+	3.什么时候销毁HttpSessio对象?
+	1).直接调用httpsession的invalidate() 使当前的session失效
+	2).服务器卸载了当前WEB应用
+	3).超出httpsession的过期时间   httpsesson.getMaxInactiveInterval()获取当前的Session销毁时间  httpsession.setMaxInactiveInterval()  设置Session的过期时间  
+		可以在web.xml可以设置Session的过期时间  可以设置局部和全局(tomcat)
+	4).并不是关闭了浏览器就销毁了Session
+	4.Session有那些常用方法?
+	session.getId()获取ID 
+	session.isNew()判断是否为新，返回boolean
+	session.getMaxInactiveInternal获取Session的最大持续时间
+	session.getCreationTime()获取Session的创建时间
+	session.getLastAccessedTime()获取Session的上次登录时间
+	session.getAttribute()获取Session的属性
+	session.setAttribute()设置session的属性值
+	5.怎么进行URL重定向?
+	当Cookie被禁用的时候Session就无法跟踪Session，那么就需要URL的重写
+	response.encodeURL("1.jsp")填写超链接指向的文件的路径即可
+	JAVABean? 
+	有一个无参构造器就是JavaBean
+	6.Session中的绝对路径和相对路径问题?    *
+	*开发时尽量全部使用绝对路径request.getContextpath() 减少相对路径的使用
+	首先要明白一个问题，为什么相对路径会出错。当使用Servlet的时候，就会发生站点路径的错误
+	JavaWEB开发中的/到底代表什么?
+	1).当前WEB应用的根路径 http://localhost:8080/contextPath
+	->请求转发时:request.getRequestDispatcher("/path/a.jsp").forword(requst.response)
+	->web.xml 文件中映射Servlet访问路径:
+	<Servlet-mapping>
+		<url-pattern>/TestServlet</url-pattern>
+	</Servlet-mapping>
+	2).WEB站点的根路径:http://localhost:8080/
+	->超链接:<a href='/TestServlet'>To B page</a>
+	->表单中action <form action='/login.jsp'>
+	->做请求的重定向的时候:request.sendRedirect("")
+	7.Session来实现避免表单的重复提交?
+	->扩展  List<String> list=Arrays.asList("hello","world"）  把数组转化为List集合的概念
+	通过Session配合隐藏域来实现表单的重复提交
+	例如 Session.setAttribut("id",new date().getTime+"") input type='hidden' value="new date().getTime+' '"
+5.EL表达式 
+	Expression Language
+	1.语法: ${}  param.name  代表这个表单里面的name属性的东西  
+	2.  .与[]  他两作用是一样的，可以混合使用 
+	    ->区别  当属性名的里面有.的时候，例如[com.China_Sh]  就需要使用[]
+	3.EL变量范围，当使用${username}的时候，代表从小到大自动寻找，先从page->request->session->application 中寻找  对应的范围名称分别是SessionScope
+	4.EL可以自动的进行类型转换 例如 ${param.socre+11}=>12  request.getParameter("score")+11=>111  
+	5.El数组paramValues.name 扩展(.class) 可以获取一组name相等的数组   还可也在后面进行.  就是不断的调用后面的方法 调用get方法，但是要省略get这个单词
+	6.其他隐藏对象pageContext(后面的了解即可) cookie.JSESSION 可以获取cookie   initParam可以获取页面初始化参数
+	7.*pageContext ${pageContext.request.contextPath}  可以获取任何不带参数的页面隐藏对象*
+	8.El的关系运算符  > = <等等都可以使用  *Empty运算符很重要  ${empty requestScope.name}可以判断是否为空
+	9.El的函数导入  ${fn:length(param.name)}
+6.简单标签
+	1.可以很好的减少逻辑，并且对前段开发人员更加友好
+	2.开发过程， 1)自定义开发库的类，2)在tld页面进行描述，3)在jsp页面进行使用
+	3.在继承SimpleTag接口中   在text.tld下面
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+  <description>MyTag 1.1 core library</description>
+  <display-name>MyTag core</display-name>
+  <tlib-version>1.0</tlib-version>
+  
+  <!-- 这个是自定义的SimpleTag封装接口 -->
+  <short-name>China_Sh</short-name>
+  <uri>http://com.Chins_Sh.testtag</uri>
+  
+  <!-- 这个是秒数的tld文件 -->
+  <tag>
+  	<name>Hello</name>
+  	<tag-class>com.China_Sh.SimpleTag.SimpleTag</tag-class>
+  	<body-content>empty</body-content>
+  </tag>
+</taglib>
+	4.SimpleTag接口详细解释
+	1).setJspContext() 把代表页面PageContext的参数传递过来 pageContext可以获取JSP页面的其他8个隐含对象
+	2).doTag()  表前提逻辑实际应该编写到该方法中
+	3).如何获取自定义标签的属性
+  	<attribute>
+  		<!-- 属性名 -->
+  		<name>value</name>
+  		<!-- 该属性是否被必须 -->
+  		<required>true</required>
+  		<!-- 该标签表示是否可以动态的获取该属性值 -->
+  		<rtexprvalue>true</rtexprvalue>
+  	</attribute>
+	4).在实际开发的过程中，直接继承SimpleTagSupport类
+	5.带标签体的自定义标签
+	1).若一个标签有标签体，在自定义标签处理器中使用JSPFragment对象封装标签信息
+	2).若配置了标签含有标签体，则JSP引擎会调用setJspBody 吧JSPFramepament传递给处理类，所有直接调用getJspFragment即可
+	3).JspFrament 的invoke（write）方法，把标签体内容给write中输出，若为null，则等同于invoke(request.getJspContext().getOut())即可输出到页面上
+	4).在tld文件中，使用<body-content>节点来描述标签的类型
+	->empty没有标签体
+	->scriptless(最常用):标签体可以包含el表达式和jsp动作元素，但不能包含jsp脚本
+	->tagdependent:表示标签体由标签本身进行解析
+	6.带父标签的自定义标签
+	1).父标签无法获取子标签的引用，父标仅把子标签当标签体使用
+	2).子标签通过getParent()方法来获取父标签的引用
+	3).注意：父标签的类型是JspTag类型，该接口是一个空接口，但是来统一SimpleTag和Tag的
+	4).在tld配置中，无需为父标签有额外的配置，子标签是以标签体的形式存在的
+	7.El表达式的自定义函数
+	1).很少使用，只要看到能分辨出来就行
+7.JSTL
+	1.全名是JavaServer Pages Standard Tag Library中文名JSP标准标签函数库  和El配合使用(就是封装好的标签库)
+	2.五大标签库 核心标签库c:  国际标签库fmt:  SQL标签库sql:  xml标签库x:   函数标签库fn:
+	3.表达式操作:
+	->c:out   可以对特殊字符进行转换
+	  value=''里面嵌套EL表达式，显示值
+	  default=''  默认值，如果读取的为空，则读取这个
+	  escapeXml=""  设置为true或false  是否解析特殊字符，一般设置为默认值
+	->c:set
+	  var=''  设置变量的名字
+	  value=''  设置他的值 
+	  scope=''  设置这个变量的存放空间
+	  例如:<c:set value='123' name='China_Sh' scope='page'></c:set>  <=>   <% pageContext.setAttribute("China_Sh","123") %>
+ 	  target   指定某个Setvlet或者javaBean  
+	  property=''  和上个属性配合使用   代表指定具体的属性 
+	->c:remove
+	  var=''  代表移除的变量名
+	  scope=''   代表移除的范围
+	4.流程控制
+	->c:if
+	  test     用EL表达式进行判断,正确，则显示标签体
+	  var      设置一个变量，可以吧判断的结果存储起来，以备后面使用
+	->c:choose,cLwhen,c:otherwise
+	  test     和if的一样使用
+	  可以实现elseif  但是比较麻烦
+	  注意 c:choose以when,otherwise的父标签使用
+               c:when,c:otherwise不能脱离c:choose单独使用
+	       c:otherwise必须在c:when之后使用
+	5.迭代操作
+	->c:forEach  *
+	  可以对数组,Collection,Map进行遍历
+	  items    代表指向的集合或者数组
+	  var      指向具体的键名
+	  begin    开书点    对于集合来说是从0开始算
+	  end      结束点
+          step     距离点
+	  varStatus='字符串'   字符串.index  索引   字符串.first是否是第一个   字符串.last是否是最后一个    字符串.count代表个数
+	->c:forTokens
+	  对字符串的切割  类似于split()
+	6.URL操作
+	->import
+	  可以包含页面到当前页面,不多见
+	->redirect
+	  是当前JSP页面可以转发到指定页面
+	->url
+	  产生一个url地址，可以根据Cookie是否可用，来智能进行URL重写，对GET请求的参数进行转码   特别实用*
+	  还可以使用c:param为URL添加参数，value中的/代表当前WEB应用的根目录
+8.Filter过滤器
+	1.基本功能是对Servlet容器调用Servlet的过程进行拦截，从而在Servlet进行响应处理的前后实现一些特殊的功能
+	 也需要在web.xml中进行配置，配置方法和Servlet是一样的
+	2.doFilter默认是进行拦截  调用chain的doFileter传递request,response可以进行放行   
+	  注:Filter可以产生一个链  就是多个Filter拦截的顺序和<filter-mapping>的配置顺序有关,靠前的先被调用
+	3.Filter这个没有接口可以继承,必须实现这个Filter这个类，及时有些方法为空也必须写
+	4.多个代码的执行顺序  从第一个Filter的chain上面到第二个Filter的chain的上面。。。。到指定页面上。。。到倒数第一个filter的chain上面到倒数第二个chain的上面(13542类似于js的冒泡原理)
+	5.当通过转发的机制进入指定的页面的时候，拦截器就不能使用了----->需要指定dispacher拦截的资源被容器调用的方式(默认支持get.post方式)
+	6.dispacher中的属性REQUEST FORWORD 最常用的两种方式，可以同时指定多种方式       INCLUDE包含 ERROR错误页面(通过web.xml方式才算)
+	7.典型应用1.
+	->禁用浏览器的缓存过滤器  在过滤器中填写如下代码
+	response.setDateHeader("Expires",-1);
+	response.setHeader("CaChe-Control","no-cache");
+	response.setHeader("Pragma","no-cache");
+	  典型应用2.
+	->字符编码过滤器
+	设置一个过滤器，任何的请求都经过这个过滤器
+	  1).首先，在web.xml中设置一个公共参数，参数为字符编码
+	  2).在Filter中设置init()读取这个服务器的默认字符编码参数
+	  3).在放行
+9.Servlet监听器
+	1.ServletContext,HttpSession,ServletRequest监听这三种域对象
+	 ->监听域对象的创建和销毁
+	2.创建一个ServletContextListener的类，实现其中的两个方法，在web.xml中配置Listener <listener></listener>   这是最常用的监听器
+	 ->域对象中属性的变更的事件监听器        增加，变更，移除
+	3.这三种属性变更的监听器很少被使用
+	4.通过方法中的参数可以获取到属性的名字和属性的值
+	 ->感知Session绑定的时间监听器
+	5.HttpSessionBindingListener和HttpSessionActivationListener接口   这两个类是绑定在具体的某个JAVABean身上，不需要在web.xml中进行配置
+	6.经典案例
+	->通过session个数，统计在线人数
+	->先配置<listener>com....</listener>
+	->设计一个HttpSessionListener   继承session创建的接口
+	->先获取 session.getSession().getServletContext()  先获取web应用的配置	然后设置这个application的属性，通过这个属性就可以得到值
+10.文件的上传和下载
+	1.表单适用file文本域  
+	2.表单的提交方式为post
+	3.表单改为二进制提交方式   multipart/form-data
+	4.文件的上传应该使用fileUpload组件，具体详情查看API
+	5.文件的下载比较简单
+	->设置文件的响应头response.setContentType("application/x-msdownload");
+	->设置响应头response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("传智播客.ppt"));
+	6.如果读取的是二进制文件，则使用io流读取，然后吧读取到的文件放入响应中response.getOutputStream();最后关闭输入流，输出流不要关闭
+11.国际化Servlet
+	1.MessageFormat将字符串中补充占位符
+	->MessageFormat.format()
+	2.根据地区动态获取文件
+	->ResourceBundle resourceBundle = ResourceBundle.getBundle("i18n", locale);
+	->第一个参数是配置文件的头部  i18n_en_US.properties   en_US代表的是美国  zh_CN是中国
+	->resourceBundle.getString("date")调用getString就可以获得具体的某个参数的值 
+	3.支持国际化的标签
+	
+
+Java_Web案例
+	
