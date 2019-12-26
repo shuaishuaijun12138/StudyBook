@@ -52,7 +52,7 @@ $("div").show().delay("3000").fadeOut();
 
 9,用jQuery 在第二个li与第三个li中间插入一个li
 
-![img](file:///C:/Users/云怎么~1/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg)
+![clip_image010](img/clip_image010.jpg)
 
 10,用jQuery写出获取 选择盒子的值
 
