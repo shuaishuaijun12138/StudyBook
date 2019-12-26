@@ -26,13 +26,13 @@
 ##### 具体操作
 
 1. `git clone https://github.com/link58/StudyBook.git`
-2. 在目录下面创建自己名字的文件夹,例如`xxx`
-3. 往文件夹里面添加内容
-
-4. `git add .`
-5. `git commit -m "此处添加描述信息" `
-6. `git push origin master`
-7. 完成
+2. `cd StudyBook`
+3. 在目录下面创建自己名字的文件夹,例如`xxx`
+4. 往文件夹里面添加内容
+5. `git add .`
+6. `git commit -m "此处添加描述信息" `
+7. `git push origin master`
+8. 完成
 
 ###### 注意 如果出现红字问题
 
