@@ -2,7 +2,7 @@
 
 这是一个多人合作的笔记分享
 
-#### 贡献者
+### 贡献者
 
 <a href="https://github.com/2662419405" target="_blank">
     <img width=50 src="https://avatars2.githubusercontent.com/u/47957816?s=460&v=4">
@@ -18,3 +18,4 @@
 
 1. 有想法的小伙伴可以fork我们的项目,然后pull request给我们
 2. 在issues中,输入自己的用户名,我们会邀请你加入到我们的开发中^-^
+
