@@ -33,3 +33,22 @@
 5. `git commit -m "此处添加描述信息" `
 6. `git push origin master`
 7. 完成
+
+###### 注意 如果出现红字问题
+
+```
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/link58/StudyBook.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+解决
+
+先输入->`git pull origin master`
+
+再输入->`git push origin master`
+
