@@ -1,20 +1,18 @@
 1,window.onload()与$(document).ready(function(){})的区别
 
-![img](file:///C:/Users/云怎么~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)
+![clip_image002](img/clip_image002.jpg)
 
 2,绑定事件的方法有几种分别是什么?
 
-![img](file:///C:/Users/云怎么~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg)
+![clip_image004](img/clip_image004.jpg)
 
 3,写一个二级菜单插件
 
-![img](file:///C:/Users/云怎么~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg)
+![clip_image006](img/clip_image006.jpg)
 
 4,用jQuery写出表单验证:手机号,密码字母数字组合
 
-![img](file:///C:/Users/云怎么~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg)
-
-​     
+![clip_image008](img/clip_image008.jpg)
 
 5,用jQuery写tab(选项卡)切换图
 
