@@ -24,6 +24,10 @@
     <img width=50 src="https://avatars0.githubusercontent.com/u/57390550?s=400&v=4">
 </a>
 
+<a href="https://github.com/Wangjiateng666" target="_blank">
+    <img width=50 src="https://avatars3.githubusercontent.com/u/42726981?s=400&v=4">
+</a>
+
 > 提交代码或改进方案，被采纳的同学会出现在这里。欢迎更多的小伙伴们加入到我们的行列中(  •̆ ᵕ •̆ )◞♡
 
 ### 提交方式
