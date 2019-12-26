@@ -18,11 +18,13 @@
 
 5,用jQuery写tab(选项卡)切换图
 
+```
 $("ul li").click(function(){
 
   $($("#box").children()).hide().eq($(this).index()).show();
 
-​        })
+ })
+```
 
 6,用jQuery写出图片滚动
 
