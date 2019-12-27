@@ -44,3 +44,5 @@ $("img").hover(function(){
 ### 1.typeof :	返回一个表示数据类型的字符串，返回结果包括：number、boolean、string、object、undefined、function等6种数据类型。
 
 ### 2.instanceof:	判断对象和构造函数在原型链上是否有关系，如果有关系，返回真，否则返回假.
+
+更多请百度
