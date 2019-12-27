@@ -39,9 +39,9 @@
 
 
 
-##### 具体操作
+#### 具体操作
 
-1. `git clone https://github.com/link58/StudyBook.git`
+1. `git clone https://github.com/link58/StudyBook.git`      (如果只想下载项目,到这步即可,此过程可能过慢,请耐心等待,有翻墙工具的可以挂一下)
 2. `cd StudyBook`
 3. 在目录下面创建自己名字的文件夹,例如`xxx`
 4. 往文件夹里面添加内容
@@ -68,3 +68,4 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 再输入->`git push origin master`
 
+###### 如果出现443报错,则是没有收到邀请,没有权限提交
