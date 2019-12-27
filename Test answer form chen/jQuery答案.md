@@ -26,29 +26,27 @@ $("ul li").click(function(){
 
 6,用jQuery写出图片滚动
 
+```
 function startScroll(){
-
 ​    if($('div').scrollLeft()>=800){
-
 ​      $('div').scrollLeft(0)
-
 ​        }
-
 ​    $('div').scrollLeft($oDom.scrollLeft()+i)
-
 ​      }
-
 ​    setInterval(startScroll,10)
+```
 
 7,写出trigger()和triggerHander()区别
 
-trigger():在每一个匹配的元素上触发某类事件。
+**trigger():在每一个匹配的元素上触发某类事件。**
 
-triggerHandler():这个特别的方法将会触发指定的事件类型上所有绑定的处理函数。
+**triggerHandler():这个特别的方法将会触发指定的事件类型上所有绑定的处理函数。**
 
 8,如何使一个div显示,三秒后消失
 
+```
 $("div").show().delay("3000").fadeOut();
+```
 
 9,用jQuery 在第二个li与第三个li中间插入一个li
 
@@ -56,4 +54,7 @@ $("div").show().delay("3000").fadeOut();
 
 10,用jQuery写出获取 选择盒子的值
 
+```
 Console.log( $ (“input”) .val ( ) )
+```
+
