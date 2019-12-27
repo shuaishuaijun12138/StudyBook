@@ -1,0 +1,34 @@
+git init创建一个隐藏的.git配置文件
+mkdir link58新建一个link58的文件夹
+git status查看文件夹状态，红色为这些文件都在工作区
+git add加文件名，按tab键自动补全（提交文件）将文件从工作区提交到暂存区，存入暂存区的文件变为绿色
+git add 文件名 git文件名  上传多个文件
+git add . 上传所有文件
+
+编写文档的方法：
+文件夹内直接修改，修改的文件需要重新上传到暂存区
+vim+文件名，在控制面板进入修改文件状态 退出按esc输入：wq write quite（写入并且退出）
+
+另存为：git commit 输入报错进入vim 按i输入“项目初始化”，按esc输入：wq退出
+另存为后的代码查看不了
+
+直接另存为：git commit -m ‘修改了1.txt’
+
+从暂存区并且从目录下删除文件：rm加文件名，不写文件名就全删除
+
+查看操作信息：git log
+查看非常全的操作信息：git reflog
+重置：git reset
+重置找回删除的文件：git reset --hard+id值
+版本回退：git reset --hard HEAD^  往前重置几次就加几个^
+版本回退3步：git reset --hard HEAD-3
+三个工作区都回退用--hard，只让本地回退用--soft
+
+英文状态下b翻页 q退出
+
+常见的命令
+git init创建配置文件
+git add加入暂存区
+git status 查看文件状态
+git commit参加到本地库
+clear清屏
