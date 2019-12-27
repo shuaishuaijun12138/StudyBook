@@ -28,6 +28,10 @@
     <img width=50 src="https://avatars3.githubusercontent.com/u/42726981?s=400&v=4">
 </a>
 
+<a href="https://github.com/199907140028" target="_blank">
+    <img width=50 src="https://avatars3.githubusercontent.com/u/59218549?s=88&v=4">
+</a>
+
 > 提交代码或改进方案，被采纳的同学会出现在这里。欢迎更多的小伙伴们加入到我们的行列中(  •̆ ᵕ •̆ )◞♡
 
 ### 提交方式
