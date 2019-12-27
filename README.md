@@ -53,7 +53,7 @@
 4. 往文件夹里面添加内容
 5. `git add .`
 6. `git commit -m "此处添加描述信息" `
-7. `git push origin master`
+7. `git push origin master`         <------------此步骤需要有权限才行,被别人邀请
 8. 完成
 
 ###### 注意 如果出现红字问题
