@@ -46,35 +46,30 @@
 > 1. 修改C:\Windows\System32\drivers\etc 下面的 hosts文件
 >
 > 2. 在原有文件的基础上,换行追加以下代码
->   
+>
 >   3. ```
->     151.101.185.194 github.global-ssl.fastly.net
->   192.30.253.112 github.com
->   ```
+>  151.101.185.194 github.global-ssl.fastly.net
+> 192.30.253.112 github.com
+>  ```
 > 4. 参考我的hosts文件为
 >
-> 5. ```
->   127.0.0.1 localhost
->   151.101.185.194 github.global-ssl.fastly.net
->   192.30.253.112 github.com
->   ```
+> ```
+> 127.0.0.1 localhost
+> 151.101.185.194 github.global-ssl.fastly.net
+> 192.30.253.112 github.com
+> ```
 > 6. 更新DNS缓存
-> 
-> 
+>
+>
 > ```
 > # macOS
 > dscacheutil -flushcache
 > # Windows
 > ipconfig /flushdns
 > ```
-> 
+>
 > 8. 成功之后
-> 
-> 9. ```
->   Windows IP 配置
->   ```
-> 
-> 已成功刷新 DNS 解析缓存。
+>
 
 1. `git clone https://github.com/link58/StudyBook.git`  
 2. `cd StudyBook`
