@@ -41,7 +41,43 @@
 
 #### 具体操作
 
-1. `git clone https://github.com/link58/StudyBook.git`      (如果只想下载项目,到这步即可,此过程可能过慢,请耐心等待,有翻墙工具的可以挂一下)
+> ###### 由于github是美国服务器,下载可能过慢,此步骤为加快下载速度,不在乎速度的可以跳过
+
+> 1. 修改C:\Windows\System32\drivers\etc 下面的 hosts文件
+>
+> 2. 在原有文件的基础上,换行追加以下代码
+>
+> 3. ```
+>    151.101.185.194 github.global-ssl.fastly.net
+>    192.30.253.112 github.com
+>    ```
+>
+> 4. 参考我的hosts文件为
+>
+> 5. ```
+>    127.0.0.1 localhost
+>    151.101.185.194 github.global-ssl.fastly.net
+>    192.30.253.112 github.com
+>    ```
+>
+> 6. 更新DNS缓存
+>
+> 7. ```
+>     # macOS
+>     dscacheutil -flushcache
+>     # Windows
+>     ipconfig /flushdns
+>    ```
+>
+> 8. 成功之后
+>
+> 9. ```
+>    Windows IP 配置
+>    
+>    已成功刷新 DNS 解析缓存。
+>    ```
+
+1. `git clone https://github.com/link58/StudyBook.git`  
 2. `cd StudyBook`
 3. 在目录下面创建自己名字的文件夹,例如`xxx`
 4. 往文件夹里面添加内容
