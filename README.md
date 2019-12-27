@@ -55,7 +55,7 @@
 
 >如果git clone项目过慢------>>>>>  <a href="https://blog.csdn.net/qq_15110681/article/details/94415946">参考次链接</a>
 
-1. `git clone https://github.com/link58/StudyBook.git`  
+1. `git clone https://github.com/Wuchenwcf/MyCode.git --depth==1`  
 2. `cd StudyBook`
 3. 在目录下面创建自己名字的文件夹,例如`xxx`
 4. 往文件夹里面添加内容
