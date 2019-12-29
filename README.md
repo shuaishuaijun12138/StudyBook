@@ -1,6 +1,10 @@
 # StudyBook
 
-这是一个多人合作的笔记分享
+大家分享的只要关于学习方面都可以 (大家不要传太大的文件,推荐MD格式文件,可以在线阅读,而且很小)
+
+**鹿总分享的是珍藏的笔记哦**
+
+**陈旭分享的是每天考完试的答案**
 
 ### 贡献者
 
@@ -28,6 +32,14 @@
     <img width=50 src="https://avatars3.githubusercontent.com/u/42726981?s=400&v=4">
 </a>
 
+<a href="https://github.com/xiaodongjs" target="_blank">
+    <img width=50 src="https://avatars1.githubusercontent.com/u/59218511?s=400&v=4">
+</a>
+
+<a href="https://github.com/199907140028" target="_blank">
+    <img width=50 src="https://avatars0.githubusercontent.com/u/59218549?s=400&v=4">
+</a>
+
 > 提交代码或改进方案，被采纳的同学会出现在这里。欢迎更多的小伙伴们加入到我们的行列中(  •̆ ᵕ •̆ )◞♡
 
 ### 提交方式
@@ -43,13 +55,13 @@
 
 >如果git clone项目过慢------>>>>>  <a href="https://blog.csdn.net/qq_15110681/article/details/94415946">参考次链接</a>
 
-1. `git clone https://github.com/link58/StudyBook.git`  
+1. `git clone https://github.com/link58/StudyBook.git --depth=1`  
 2. `cd StudyBook`
 3. 在目录下面创建自己名字的文件夹,例如`xxx`
 4. 往文件夹里面添加内容
 5. `git add .`
 6. `git commit -m "此处添加描述信息" `
-7. `git push origin master`
+7. `git push origin master`         <------------此步骤需要有权限才行,被别人邀请
 8. 完成
 
 ###### 注意 如果出现红字问题

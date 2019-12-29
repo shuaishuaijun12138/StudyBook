@@ -1,9 +1,0 @@
-一.环境搭建与开发前景
-	1.当前主要流行eclipse+ADT+SDK开发和android studio继承开发环境
-	2.src目录:包含app所需要的全部程序代码,大多数都在这里进行java编程
-	3.assets:存放资源,不会再java下产生资源id 需要使用assetsManager类记性访问
-	4.libs：存放一些jar包，或者第三方一些包
-	5.res：存放资源的，drawable存放图片资源 layout存放布局文件 values存放参数的描述文件 
-	6.AndroidManifest.xml:系统的控制文件，主要是配置一些兼容性例如SDK版本
-二.
-	1.
