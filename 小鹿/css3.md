@@ -145,7 +145,6 @@ p:before(content:urlgive_ advice .png);}
 
 <p>你好吗，好好学习，天天向上!你做到了吗? </p>
 
-
 ### 1.3 content:字符串
 
 ●content:字符串:在指定位置插入字符串, 后面的样式color和background-color 只对插入的文字生效，因为是p:before.
@@ -1150,4 +1149,94 @@ transition:过渡效果
 
 */
 
- 
+ 响应式开发
+
+1.手机网站屏幕比例及响应式开发原理
+
+2.响应式布局老方法
+
+3.利用css3 CSS3中的Media Query和rem设置
+
+响应式布局应该是一种弹性的栅格布局，不同尺寸下弹性适应，如以下页面中各模块在不同尺寸下的位置
+
+![img](file:///C:/Users/hp/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)
+
+## 响应式布局老方法
+
+" Meta标签定义
+
+使用viewport meta标签在手机浏览器上控制布局
+
+ <meta name="viewport" content="width=device-width, initial-scale=1.0,
+
+maximum-scale= 1.0, user-scalable=0" />
+
+通过快捷方式打开时全屏显示
+
+ <meta name="apple-mobile-web-app-capable" content="yes" />隐藏状态栏
+
+ <meta name="apple-mobile-web-app-status-bar-style" content="blank"/>
+
+ **iPhone** **会将看起来像电话号码的数字添加电话连接，应当关闭**
+
+ <meta name="format-detection" content= "telephone=no" />
+
+## 利用css3 @media only screen and (min-width:*px)和rem设置
+
+■rem
+
+**rem****是通过根元素( html)进行适配的**
+
+**rem****得兼容性**
+
+**以屏幕640为标准rem算法**
+
+![img](file:///C:/Users/hp/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg)
+
+**Link**
+
+## CSS3中的Media Query
+
+■CSS3中的Media Query ( 媒介查询)是什么
+
+通过不同的媒介类型和条件定义样式表规则。媒介. 查询让CSS可以更精确作用于不同的媒介类型和同-一 媒介的不同条件。媒介查询的大部分媒介特性都接受 min和max用于表达”大于或等于”和”小于或等于”。
+
+ **width** **会有min-width和max-width媒介查询可以被用 在CSS中的@media和@import规则上，也可以被用在 HTML和XML中**
+
+## ■media query能够获取的值
+
+设备的宽和高device-width, device-height显 示屏幕/触觉设备。
+
+渲染窗口的宽和高width，height显 示屏幕/触觉设备。
+
+设备的手持方向，横向还是竖向orientation ( portraitlanscape)和打印机等。
+
+画面比例aspect-ratio点阵打印机等。
+
+设备比例device -aspect-ratio-点阵打印机等。
+
+对象颜色或颜色列表color, color-index显示屏幕。
+
+设备的分辨率resolution。
+
+## ■语法结构及用法
+
+ **@media****设备名only (选取条件) not (选取条件) and (设备选取条件)，设备二{sRules}**
+
+字符间以空格相连，选取条件包含在小括号内，srules为兼容设置的样式表，包含在中括号 里面。only (限定某种设备，可省略)，and (逻辑与)，not (排除某种设备)为逻辑关键字， 多种设备用逗号分隔，这- - 点继承了css基本语法。
+
+ ****“stylesheet" type="text/css" media=only screen and ( max-width:480px)，only screen and (max-device-width: 480px) ”href="link.css/>**
+
+上面 使用中only可省略，限定于计算机显示器，第-一个条件max-width是指渲染界面最大 宽度，第二个条件max-device-width是指设备最大宽度。
+
+ **@media (min-device-width:1024px) and (max-width:989px)** **，screen and (max- device-width:480px)，(max-device-width:480px) and (orientation:landscape) ,(min-device width:480px) and ( max-device-width:1024px) and**
+
+**(orientation:portrait) {srules}**
+
+设置了 电脑显示器分辨率(宽度)大于或等于1024px (并且最大可见宽度为989px) ;屏 宽在480px及其以下手持设备;屏宽在480px以及横向(即480尺寸平行于地面)放置的手持设 备;屏宽大于或等于480px小于1024px以及垂直放置设备的css样式。
+
+![img](file:///C:/Users/hp/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg)
+
+![img](file:///C:/Users/hp/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg)
+
+![img](file:///C:/Users/hp/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg)
