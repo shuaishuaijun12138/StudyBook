@@ -40,6 +40,30 @@
     <img width=50 src="https://avatars0.githubusercontent.com/u/59218549?s=400&v=4">
 </a>
 
+<a href="https://github.com/akaQiang" target="_blank">
+    <img width=50 src="https://avatars1.githubusercontent.com/u/59218464?s=400&v=4">
+</a>
+
+<a href="https://github.com/wangzhen123123" target="_blank">
+    <img width=50 src="https://avatars0.githubusercontent.com/u/59218564?s=400&v=4">
+</a>
+
+<a href="https://github.com/467064526" target="_blank">
+    <img width=50 src="https://avatars1.githubusercontent.com/u/59218478?s=400&v=4">
+</a>
+
+<a href="https://github.com/619012136" target="_blank">
+    <img width=50 src="https://avatars3.githubusercontent.com/u/59218683?s=400&v=4">
+</a>
+
+<a href="https://github.com/chongchong1029" target="_blank">
+    <img width=50 src="https://avatars2.githubusercontent.com/u/58843591?s=400&v=4">
+</a>
+
+<a href="https://github.com/wjiateng" target="_blank">
+    <img width=50 src="https://avatars2.githubusercontent.com/u/39709347?s=400&v=4">
+</a>
+
 > 提交代码或改进方案，被采纳的同学会出现在这里。欢迎更多的小伙伴们加入到我们的行列中(  •̆ ᵕ •̆ )◞♡
 
 ### 提交方式
