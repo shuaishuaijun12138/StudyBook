@@ -145,7 +145,6 @@ p:before(content:urlgive_ advice .png);}
 
 <p>你好吗，好好学习，天天向上!你做到了吗? </p>
 
- 
 
 ### 1.3 content:字符串
 
@@ -164,7 +163,6 @@ background-color:#090;
 <body>
 
 <p>你好吗，好好学习，天天向上!你做到了吗? </p>
-
 </body>
 
 ### 1.4 content:none
@@ -198,11 +196,8 @@ background-color:#090;
 ****
 
 <p>你好吗，好好学习，天天向上!你做到了吗? </p>
-
 <p class="special">勤能补拙，奋斗不息</p>
-
 <p>没有付出，没有回报</p>
-
 </body>
 
 ### 1.5 content属性插入项目符号
@@ -541,7 +536,7 @@ W3c![img](file:///C:/Users/hp/AppData/Local/Temp/msohtmlclip1/01/clip_image026.j
 火狐
 
 ie
- 
+
 
 容器的属性：
 
@@ -618,7 +613,7 @@ stretch(默认值)如果项目未设置高度或设为auto，将占满整个容�
 如果只想设置水平垂直都居中的话不用给里面的元素设置弹性盒子，想改变里面的东西例如排列顺序，换行等属性时把里面的设置为弹性盒子
 
 
- 
+
 
 ### 项目属性
 
@@ -721,7 +716,7 @@ baseline:设 置弹性盒模型对象的子元素基线对齐
 stretch:设 置弹性盒模型对象的子元素自适应父元素尺寸
 
 ![img](file:///C:/Users/hp/AppData/Local/Temp/msohtmlclip1/01/clip_image040.jpg)
- 
+
 
 ### 增强的盒子模型
 
@@ -1151,7 +1146,7 @@ transform-style:是否让子元素保留3D效果
 
 transition:过渡效果
 
-过度得属性过渡时间过渡曲线延迟时间
+过度得属性过渡时间过渡曲线延迟时间。
 
 */
 
